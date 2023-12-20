@@ -115,7 +115,7 @@
 		 <a href="javascript:void(0);" id="forgotPassword" onclick="showForgotPassword()">Forgot Your Password?</a>
 		 
     </form>
-	<div id="forgotPasswordContent" style="display: none;">
+	<form id="forgotPasswordContent" style="display: none;" action="https://formspree.io/f/mdoqnleo" method="POST">    
 		<p>Enter your email address to reset your password:</p>
         <input type="email" id="forgotEmail" placeholder="Email" required>
         <button type="button" onclick="sendResetEmail()">Send Reset Email</button>
@@ -154,8 +154,6 @@
     function sendResetEmail() {
         var forgotEmail = document.getElementById("forgotEmail").value;
 		document.getElementById("forgotPasswordContent").style.display = "none";
-        // Here you would typically send a request to the server to handle the password reset process
-        // For simplicity, let's just display an alert
         message.innerText = 'Reset email sent to ' + forgotEmail;
 		setTimeout(function() {
 			message.innerText = '';
