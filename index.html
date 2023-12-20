@@ -6,8 +6,8 @@
     <title>La mmmamiiii</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: Verdana, sans-serif;
+            background-color: #333;
             margin: 0;
             display: flex;
             align-items: center;
@@ -61,11 +61,12 @@
             margin-top: 10px;
         }
 		 #infoButton {
+		 
+			padding: 10px 10px;
+			cursor: pointer;
+	  
+	  
             cursor: pointer;
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
         }
 		#infoOverlay {
             position: absolute;
@@ -75,9 +76,22 @@
             display: none;
             z-index: 1;
         }
-		   .info-container {
-            position: relative;
-        }
+		 
+		.overlay-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f9f9f9;
+		  padding: 20px;
+		  border: 1px solid #ccc;
+		  border-radius: 5px;
+		  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		  z-index: 1;
+		}
+		
+		    .input-container {
+			  display: flex;
+			  align-items: center;
+			}
     </style>
 </head>
 <body>
@@ -86,12 +100,14 @@
     <h2>Please login with your credential</h2>
     <form id="loginForm">
 		<div id="message"></div>
-        <label for="username" class="info-container">
-			Username:
+        <label for="username" class="info-container">Username:</label>
+		<div class="input-container">
 			<input type="text" id="username" name="username" required>
-			<button type="button" id="infoButton" onclick="toggleInfoOverlay()">?</button>
-			<div id="infoOverlay">Info message about the username input.</div>
-		</label>
+			<button type="button" id="infoButton" onclick="toggleInfoOverlay()">&#9432;</button>
+		</div>
+		<div class="overlay-content" id="infoOverlay">
+			<p>This is the username you received from me by email</p>
+		</div>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
