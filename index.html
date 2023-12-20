@@ -1,1 +1,151 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La mmmamiiii</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+		.user-image {
+            display: none;
+            margin-top: 20px;
+        }
+		#forgotPassword {
+            color: #3498db;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #forgotPassword:hover {
+            text-decoration: none;
+        }
+	
+        #message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+		 #infoButton {
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+		#infoOverlay {
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            display: none;
+            z-index: 1;
+        }
+		   .info-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Please login with your credential</h2>
+    <form id="loginForm">
+		<div id="message"></div>
+        <label for="username" class="info-container">
+			Username:
+			<input type="text" id="username" name="username" required>
+			<button type="button" id="infoButton" onclick="toggleInfoOverlay()">?</button>
+			<div id="infoOverlay">Info message about the username input.</div>
+		</label>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+		 <a href="javascript:void(0);" id="forgotPassword" onclick="showForgotPassword()">Forgot Your Password?</a>
+		 
+    </form>
+	<div id="forgotPasswordContent" style="display: none;">
+		<p>Enter your email address to reset your password:</p>
+        <input type="email" id="forgotEmail" placeholder="Email" required>
+        <button type="button" onclick="sendResetEmail()">Send Reset Email</button>
+    </div>
+</div>
+
+<script>
+	function toggleInfoOverlay() {
+        // Toggle the display of the info overlay
+        var infoOverlay = document.getElementById("infoOverlay");
+        infoOverlay.style.display = (infoOverlay.style.display === "none") ? "block" : "none";
+    }
+    function login() {
+		var enteredUsername = document.getElementById("username").value;
+		var enteredPassword = document.getElementById("password").value;
+		if (enteredUsername == "lamami@cocchinen.com" && enteredPassword == "AchiLucky1707" ){
+			window.location.href = "image-page.html";
+			document.getElementById("giftImage").style.display = "block";
+			
+			
+		}
+		else{
+			message.innerText = 'Invalid username. Please try again.';
+			setTimeout(function() {
+				message.innerText = '';
+            }, 2000);
+		}
+    }
+	
+	function showForgotPassword() {
+        // Toggle the display of the "Forgot Your Password" content
+        var forgotPasswordContent = document.getElementById("forgotPasswordContent");
+        forgotPasswordContent.style.display = (forgotPasswordContent.style.display === "none") ? "block" : "none";
+    }
+
+    function sendResetEmail() {
+        var forgotEmail = document.getElementById("forgotEmail").value;
+		document.getElementById("forgotPasswordContent").style.display = "none";
+        // Here you would typically send a request to the server to handle the password reset process
+        // For simplicity, let's just display an alert
+        message.innerText = 'Reset email sent to ' + forgotEmail;
+		setTimeout(function() {
+			message.innerText = '';
+            }, 2000);
+    }
+</script>
+
+</body>
+</html>
