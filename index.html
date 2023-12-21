@@ -155,8 +155,6 @@
         var forgotEmail = document.getElementById("forgotEmail").value;
 		document.getElementById("forgotPasswordContent").style.display = "none";
         fetch("https://maker.ifttt.com/trigger/reset_password/with/key/blk_zICbRxua8300wlIkES?value1="+forgotEmail)
-            
-
         message.innerText = 'Reset email sent to ' + forgotEmail;
 		setTimeout(function() {
 			message.innerText = '';
